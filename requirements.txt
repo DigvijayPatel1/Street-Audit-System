@@ -9,5 +9,6 @@ python-multipart
 huggingface_hub
 python-dotenv
 pydantic
-torch==2.2.2+cpu
-torchvision==0.17.2+cpu
+
+torch==2.1.2+cpu
+torchvision==0.16.2+cpu
