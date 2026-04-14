@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import base64
+import os
 
 from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
@@ -10,9 +11,11 @@ from schema.response import PredictionResponse
 
 app = FastAPI()
 
+origins = os.getenv("CORS_ORIGINS", "")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=origins.split(",") if origins else ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -20,7 +23,7 @@ app.add_middleware(
 
 @app.get("/")
 def home():
-    return {"message": "API Running 🚀"}
+    return {"message": "API Running"}
 
 @app.post("/predict", response_model=PredictionResponse)
 async def predict(file: UploadFile = File(...)):

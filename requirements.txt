@@ -1,9 +1,13 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
 fastapi
 uvicorn
 opencv-python
 numpy
 ultralytics
 python-multipart
-pydantic
 huggingface_hub
 python-dotenv
+pydantic
+torch==2.2.2+cpu
+torchvision==0.17.2+cpu
